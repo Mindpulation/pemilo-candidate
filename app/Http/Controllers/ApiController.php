@@ -7,18 +7,25 @@ use App\Models\CandidateModel;
 
 class ApiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(CandidateModel::all(), 200);
+        $content = json_decode($request->getContent(), true);
+
+        $model = new CandidateModel;
+
+        $result = $model->getCandidate($content);
+
+        return response()->json($result, 200);
+        // return response()->json(CandidateModel::all(), 200);
     }
 
     public function shows(Request $request)
     {
         $content = json_decode($request->getContent(), true);
 
-        $id = $content['id'];
+        $model = new CandidateModel;
 
-        $result = CandidateModel::find($id);
+        $result = $model->getCandidate($content);
 
         return response()->json($result, 200);
     }
@@ -66,6 +73,19 @@ class ApiController extends Controller
         }
 
         return $return_value;
+    }
+
+    public function room(Request $request)
+    {
+        $content = json_decode($request->getContent(), true);
+
+        $model = new CandidateModel;
+
+        $room_id = $content['room__id'];
+
+        $result = $model->getPosition($room_id);
+
+        return $result;
     }
 
     public function update(Request $request)

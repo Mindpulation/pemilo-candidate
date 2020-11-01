@@ -51,4 +51,32 @@ class CandidateModel extends Model
             return false;
         }
     }
+
+    public function getCandidate($prm_data)
+    {
+        // $query = DB::table($this->table)->where('room__id', $prm_room)->get();
+
+
+        $query = DB::table($this->table)->where($prm_data)->get();
+
+        if ($query) {
+            return $query;
+        } else {
+            return false;
+        }
+    }
+
+    public function getPosition($prm_room)
+    {
+        $query = DB::table($this->table)
+            ->select(DB::raw("distinct(position)"))
+            ->where('room__id', $prm_room)
+            ->get();
+
+        if ($query) {
+            return $query;
+        } else {
+            return false;
+        }
+    }
 }
