@@ -17,13 +17,13 @@ use App\Http\Controllers\ApiController;
 
 // Route::get('Candidate', 'App\Http\Controllers\apicontroller@index');
 
-Route::get('getAllCandidate', [ApiController::class, 'index']);
-Route::get('getCandidate', [ApiController::class, 'shows']);
+Route::post('getAllCandidate', [ApiController::class, 'index']);
+Route::post('getCandidate', [ApiController::class, 'shows']);
 Route::post('Candidate', [ApiController::class, 'create']);
 // Route::put('Candidate/{id}', [ApiController::class, 'update']);
 Route::put('Candidate', [ApiController::class, 'update']);
 Route::delete('Candidate', [ApiController::class, 'drop']);
-Route::get('getRoom', [ApiController::class, 'room']);
+Route::post('getRoom', [ApiController::class, 'room']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
