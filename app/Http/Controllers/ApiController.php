@@ -55,7 +55,8 @@ class ApiController extends Controller
             'photo' => $content['linkPhoto'],
             'vision' => $content['visi'],
             'mission' => '{' . $misi . '}',
-            'position' => $content['position']
+            'position' => $content['position'],
+            'classroom' => $content['classroom']
         ];
 
         $result = $model->insert($data);
