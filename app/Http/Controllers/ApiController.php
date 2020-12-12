@@ -144,7 +144,7 @@ class ApiController extends Controller
     {
 
         $content = json_decode($request->getContent(), true);
-        print_r($content); rxit;
+        print_r($content); exit;
         $id = $content['id'];
         $check_candidate = CandidateModel::firstWhere('id', $id);
         $model = new CandidateModel;
